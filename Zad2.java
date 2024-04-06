@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Zad1 {
+public class Zad2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Map<String, Map<String, List<Double>>> ocenyUczniow = new HashMap<>();
