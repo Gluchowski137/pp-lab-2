@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Zad3 {
+public class Zad4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Map<String, Map<String, List<Double>>> ocenyUczniow = new HashMap<>();
@@ -33,9 +33,12 @@ public class Zad3 {
                 List<Double> ocenyPrzedmiotu = new ArrayList<>();
                 double ocena;
                 while (scanner.hasNextDouble() && (ocena = scanner.nextDouble()) != -1) {               
-                    ocenyPrzedmiotu.add(ocena);     
+                    if (ocena >= 0 && ocena <= 6) {
+                        ocenyPrzedmiotu.add(ocena);
+                    } else {
+                        System.out.println("Ocena poza zakresem! Wprowadź ocenę od 0 do 6.");
+                    }    
                 }
-                scanner.nextLine();
                 oceny.put(przedmiot, ocenyPrzedmiotu);
             }
 
