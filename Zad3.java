@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Zad2 {
+public class Zad3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Map<String, Map<String, List<Double>>> ocenyUczniow = new HashMap<>();
@@ -44,11 +44,26 @@ public class Zad2 {
 
         for (Map.Entry<String, Map<String, List<Double>>> uczen : ocenyUczniow.entrySet()) {
             System.out.println("Uczeń: " + uczen.getKey());
+        
+            double sumaWszystkichOcen = 0;
+            int liczbaWszystkichOcen = 0;
+        
             for (Map.Entry<String, List<Double>> przedmiot : uczen.getValue().entrySet()) {
-                double suma = przedmiot.getValue().stream().mapToDouble(Double::doubleValue).sum();
-                double srednia = suma / przedmiot.getValue().size();
-                System.out.println("Średnia z " + przedmiot.getKey() + ": " + srednia);
+                System.out.print("Oceny z " + przedmiot.getKey() + ": ");
+                double suma = 0;
+        
+                for (double ocena : przedmiot.getValue()) {
+                    suma += ocena;
+                    System.out.print(ocena + " ");
+                }
+        
+                System.out.println("\nSuma ocen z " + przedmiot.getKey() + ": " + suma);
+                sumaWszystkichOcen += suma;
+                liczbaWszystkichOcen += przedmiot.getValue().size();
             }
+        
+            double sredniaWszystkichOcen = sumaWszystkichOcen / liczbaWszystkichOcen;
+            System.out.println("Średnia wszystkich ocen ucznia " + uczen.getKey() + ": " + sredniaWszystkichOcen);
         }
     }
 }
